@@ -1,0 +1,379 @@
+[
+  {
+    "id": "deliveryMethods",
+    "name": "Методы доставки по региону",
+    "description": "Возвращает список доступных методов доставки для указанного региона (СПБ, МСК, КРД)",
+    "method": "GET",
+    "path": "/api/deliveryMethods",
+    "queryParams": { "region": "СПБ" },
+    "requestSchema": {},
+    "responseSchema": {
+      "success": true,
+      "data": {
+        "jbi": { "Манипулятор 5тн": "53981" },
+        "gaz": { "Шаланда": "54001" }
+      }
+    },
+    "notes": "Параметр region передаётся в query string"
+  },
+  {
+    "id": "gazCalculate",
+    "name": "Расчёт доставки (газели)",
+    "description": "Рассчитывает стоимость доставки малотоннажным транспортом",
+    "method": "POST",
+    "path": "/api/delivery_gaz",
+    "requestSchema": {
+      "deliveryMethod": "Оптимальный маршрут",
+      "addressAndCoordinates": {
+        "coordinates": { "latitude": 51.7903595, "longitude": 55.1691081 },
+        "address": "г Оренбург, ул 57-я линия"
+      },
+      "materials": [
+        {
+          "bitrixId": 95509,
+          "calculator": "Газобетон и кирпич",
+          "category": "U-блок Bonolit",
+          "date": "17.03.2026",
+          "description": "Нет данных",
+          "guideId": null,
+          "manufacturer": "Бонолит, (Электросталь)",
+          "massPerOne": 0,
+          "name": "U-блок Bonolit D500 400x250x500 мм",
+          "numberPallets": 1,
+          "palletUnits": 1.8,
+          "pricePerOne": 670,
+          "quantity": 1,
+          "unit": "шт",
+          "volumePerOne": 1
+        }
+      ],
+      "productInfo": {
+        "ADDITIONAL_INFO": null,
+        "INN": null,
+        "LATITUDE": 55.765048,
+        "LONGITUDE": 38.451712,
+        "NAME": "Бонолит, (Электросталь)",
+        "REGION": "МСК"
+      }
+    },
+    "responseSchema": {
+      "status": "ok",
+      "message": "✅ Доставка обработана",
+      "data": {
+        "bestMethod": "Шаланда",
+        "distanceProdToClient": 45.2,
+        "distanceKadToClient": 12.5,
+        "numberOfTrips": 3,
+        "costPerTrip": 3500,
+        "totalCost": 10500,
+        "manufacturer": "Производитель",
+        "bitrixId": "54001",
+        "usedCentralized": false
+      }
+    }
+  },
+  {
+    "id": "jbiCalculate",
+    "name": "Расчёт доставки ЖБИ",
+    "description": "Рассчитывает стоимость доставки тяжелых грузов (ЖБИ)",
+    "method": "POST",
+    "path": "/api/delivery_jbi",
+    "requestSchema": {
+      "deliveryMethod": "Оптимальный маршрут",
+      "addressAndCoordinates": {
+        "coordinates": { "latitude": 51.7903595, "longitude": 55.1691081 },
+        "region": "МСК",
+        "address": "г Оренбург, ул 57-я линия"
+      },
+      "materials": [
+        {
+          "bitrixId": 1852,
+          "calculator": "ЖБИ",
+          "category": "Блок фундаментальный бетонный ФБС",
+          "date": "15.05.2025",
+          "description": "Нет данных",
+          "guideId": null,
+          "manufacturer": "арт бетон",
+          "massPerOne": 1.05,
+          "name": "Блок фундаментальный бетонный ФБС 24-3-6",
+          "numberPallets": 1,
+          "palletUnits": 1,
+          "pricePerOne": 0,
+          "quantity": 1,
+          "unit": "шт",
+          "volumePerOne": 1
+        }
+      ],
+      "productInfo": {
+        "ADDITIONAL_INFO": "СПБ, Волковский просп., 32\nПН-ПТ \n09:00-18:00",
+        "INN": null,
+        "LATITUDE": 59.897573,
+        "LONGTITUDE": 30.363263,
+        "NAME": "арт бетон",
+        "REGION": "СПБ"
+      }
+    },
+    "responseSchema": {
+      "status": "ok",
+      "message": "Доставка обработана",
+      "data": {
+        "bestMethod": "",
+        "distanceProdToClient": 35.8,
+        "distanceKadToClient": 5.2,
+        "numberOfTrips": 2,
+        "costPerTrip": 4500,
+        "totalCost": 9000,
+        "bitrixId": "53982",
+        "isInsideKad": false,
+        "usedCentralized": true,
+        "clientRegion": "СПБ",
+        "manufacturerRegion": "СПБ"
+      }
+    }
+  },
+  {
+    "id": "osCalculate",
+    "name": "Расчёт доставки общестроительных",
+    "description": "Общестроительные материалы",
+    "method": "POST",
+    "path": "/api/delivery_os",
+    "requestSchema": {
+      "deliveryMethod": "Оптимальный маршрут",
+      "addressAndCoordinates": {
+        "coordinates": { "latitude": 59.86097, "longitude": 29.992735 },
+        "address": "г Санкт-Петербург, Санкт-Петербургское шоссе",
+        "region": "СПБ"
+      },
+      "materials": [
+        {
+          "bitrixId": 25779,
+          "calculator": "Общестрой",
+          "category": "H-профиль соединительный",
+          "date": "18.02.2026",
+          "description": "Нет данных",
+          "guideId": null,
+          "manufacturer": "Склад Монолит",
+          "massPerOne": 0.001,
+          "name": "H-профиль соединительный Docke Люкс Зрелый каштан 3 м",
+          "numberPallets": 1,
+          "palletUnits": 1,
+          "pricePerOne": 885.27,
+          "quantity": 1,
+          "unit": "шт",
+          "volumePerOne": 0.001
+        }
+      ],
+      "productInfo": {
+        "ADDITIONAL_INFO": "Мурино, Центральный проезд д. 6\nПН-СБ\n09:00-18:00",
+        "INN": null,
+        "LATITUDE": 60.041799,
+        "LONGITUDE": 30.472448,
+        "NAME": "Склад Монолит",
+        "REGION": "СПБ"
+      }
+    },
+    "responseSchema": {
+      "status": "ok",
+      "message": "Доставка обработана",
+      "data": {
+        "bestMethod": "",
+        "distanceProdToClient": 35.8,
+        "distanceKadToClient": 5.2,
+        "numberOfTrips": 2,
+        "costPerTrip": 4500,
+        "totalCost": 9000,
+        "bitrixId": "53983",
+        "isInsideKad": false,
+        "usedCentralized": true,
+        "clientRegion": "СПБ",
+        "manufacturerRegion": "СПБ",
+        "manufacturer": "Цементный завод"
+      }
+    }
+  },
+  {
+    "id": "mixCalculate",
+    "name": "Расчёт доставки бетона (миксеры)",
+    "description": "Бетонные смеси",
+    "method": "POST",
+    "path": "/api/delivery_mix",
+    "requestSchema": {"materials":[{"calculator":"Бетон","category":"Бетон товарный","name":"Бетон товарный В15 М200 П2","quantity":1,"unit":"м3","pricePerOne":5450,"date":"12.03.2025","description":"Нет данных","massPerOne":0,"volumePerOne":1,"manufacturer":"ЗАВОД СОСНОВО (от 3м3)","numberPallets":1,"palletUnits":1,"bitrixId":202,"guideId":null}],"deliveryMethod":"Оптимальный маршрут","addressAndCoordinates":{"address":"Санкт-Петербург","coordinates":{"latitude":59.9342802,"longitude":30.3350986}},"productionInfo":{"NAME":"ЗАВОД СОСНОВО (от 3м3)","LATITUDE":60.558333,"LONGITUDE":30.221913,"ADDITIONAL_INFO":"ЛО, п. Сосново, ул. Механизаторов, д. 2\nПН-ВС\n8:00-20:00","INN":null,"REGION":"СПБ"}},
+    "responseSchema": {
+      "status": "ok",
+      "message": "Доставка обработана",
+      "data": {
+          "bestMethod": "Миксера",
+          "distanceProdToClient": 80,
+          "distanceKadToClient": 0,
+          "numberOfTrips": 1,
+          "costPerTrip": 50400,
+          "totalCost": 50400,
+          "bitrixId": null,
+          "isInsideKad": true,
+          "usedCentralized": false,
+          "deliveredVolume": 7,
+          "mixerCombination": [
+              7
+          ],
+          "specialPoint": null,
+          "manufacturer": "ЗАВОД СОСНОВО (от 3м3)"
+      }
+    }
+  },
+  {
+    "id": "nrCalculate",
+    "name": "Расчёт доставки нерудных",
+    "description": "Сыпучие материалы",
+    "method": "POST",
+    "path": "/api/delivery_ner",
+    "requestSchema": {"materials":[{"calculator":"Нерудные материалы","category":"Щебень гравийный","name":"Щебень гравийный фракция 30-70 мм","quantity":1,"unit":"м3","pricePerOne":800,"basePricePerOne":800,"date":"12.03.2025","description":"Нет данных","massPerOne":0,"volumePerOne":1,"manufacturer":"Карьер Рябов, ВРС (ПРАЙС НЕРУДКА СПБ)","numberPallets":1,"palletUnits":1,"bitrixId":85815,"source":"ПРАЙС НЕРУДКА СПБ","mkr":null,"kf":null,"class":null}],"deliveryMethod":"Оптимальный маршрут","addressAndCoordinates":{"address":"Санкт-Петербург","coordinates":{"latitude":59.9342802,"longitude":30.3350986},"region":"СПБ"},"productionInfo":{"NAME":"Карьер Рябов, ВРС","LATITUDE":60.325189,"LONGITUDE":28.972308,"ADDITIONAL_INFO":"ЛО, Выборгский р-н, п. Рябово\nКруглосуточно","INN":null,"REGION":"СПБ"},"paymentMethod":"cash","category":"Щебень гравийный","specializedMode":true},
+    "responseSchema": {
+      "status": "ok",
+      "message": "Доставка обработана",
+      "data": {
+        "bestMethod": "самосвал",
+        "distanceProdToClient": 35.8,
+        "distanceKadToClient": 5.2,
+        "numberOfTrips": 3,
+        "costPerTrip": 4500,
+        "totalCost": 13500,
+        "isInsideKad": false,
+        "usedCentralized": true,
+        "clientRegion": "СПБ",
+        "manufacturerRegion": "СПБ",
+        "manufacturer": "Песчаный карьер"
+      }
+    }
+  },
+  {
+    "id": "pmCalculate",
+    "name": "Расчёт доставки пиломатериалов",
+    "description": "Пиломатериалы",
+    "method": "POST",
+    "path": "/api/delivery/pm/calculate",
+    "requestSchema": {"materials":[{"calculator":"Пиломатериалы","category":"ДСП","name":"Ламинированная древесно-стружечная плита ЛДСП влагостойкая шпунтованная Quick Deck Plus Наоми 22 х 900 х 1200 мм","quantity":1,"unit":"м3","pricePerOne":800,"basePricePerOne":800,"date":"12.03.2025","description":"Нет данных","massPerOne":0,"volumePerOne":1,"manufacturer":"","numberPallets":1,"palletUnits":1,"bitrixId":85815,"source":"","mkr":null,"kf":null,"class":null}],"deliveryMethod":"Оптимальный маршрут","addressAndCoordinates":{"address":"Санкт-Петербург","coordinates":{"latitude":59.9342802,"longitude":30.3350986},"region":"СПБ"},"productionInfo":{"NAME":"Карьер Рябов, ВРС","LATITUDE":60.325189,"LONGITUDE":28.972308,"ADDITIONAL_INFO":"ЛО, Выборгский р-н, п. Рябово\nКруглосуточно","INN":null,"REGION":"СПБ"},"paymentMethod":"cash","category":"ДСП","specializedMode":true},
+    "responseSchema": {
+      "status": "ok",
+      "message": "Доставка обработана",
+      "data": {
+        "bestMethod": "",
+        "distanceProdToClient": 45.3,
+        "distanceKadToClient": 6.7,
+        "numberOfTrips": 2,
+        "costPerTrip": 3800,
+        "totalCost": 7600,
+        "bitrixId": "53985",
+        "isInsideKad": false,
+        "usedCentralized": false,
+        "clientRegion": "СПБ",
+        "manufacturerRegion": "СПБ",
+        "manufacturer": ""
+      }
+    }
+  },
+  {
+    "id": "grandlineCalculate",
+    "name": "Расчёт доставки Грандлайн",
+    "description": "Грандлайн",
+    "method": "POST",
+    "path": "/api/delivery/grandline/calculate",
+    "requestSchema": {
+      "deliveryMethod": "грандлайн",
+      "addressAndCoordinates": {
+        "coordinates": { "latitude": 55.751244, "longitude": 37.618423 }
+      },
+      "materials": [
+        {
+          "name": "Металлочерепица",
+          "quantity": 50,
+          "pricePerOne": 600,
+          "manufacturer": "Грандлайн"
+        }
+      ]
+    },
+    "responseSchema": {
+      "status": "ok",
+      "message": "Доставка ПРАЙС ГРАНДЛАЙН обработана",
+      "data": {
+        "bestMethod": "Доставка",
+        "distanceProdToClient": 320.5,
+        "distanceKadToClient": 12.3,
+        "totalCost": 6000,
+        "bitrixId": "53973",
+        "isInsideKad": false,
+        "deliveryRegion": "МСК",
+        "usedGrandlineAlgorithm": true,
+        "materialsTotalCost": 34500,
+        "numberOfTrips": 1,
+        "costPerTrip": 6000,
+        "manufacturer": "Грандлайн"
+      }
+    }
+  },
+  {
+    "id": "uniqueNomenclature",
+    "name": "Товары для региона",
+    "description": "Ищет товары в заданном регионе",
+    "method": "GET",
+    "path": "/api/uniqueNomenclature",
+    "queryParams": { "region":"МСК" },
+    "requestSchema": {},
+    "responseSchema": {
+      "success": true,
+      "data": {
+          "fh": {
+            "CALCULATOR": null,
+            "CATEGORY": null,
+            "WEIGHT_TONS": null,
+            "VOLUME_CUBIC": null,
+            "BASE_UNIT": "шт",
+            "PALLET_UNITS": null,
+            "PRICE_CASH": 5,
+            "PRICE_NONCASH": 6,
+            "AREA_SQUARE": null,
+            "DENSITY": null,
+            "SHEETS_INSULATION": null,
+            "INSULATION_THICKNESS": null,
+            "MANUFACTURER": "РГБ АО ТД",
+            "ANALOGY": null,
+            "BITRIX_ID": null,
+            "AREA_OSB": null,
+            "OSB_THICKNESS_MM": null,
+            "COMPRESSION": null,
+            "SOURCE": "Ответы логистов",
+            "GUIDE_ID": null
+        }
+      },
+      "defaultPaymentMethod": "cash"
+    }
+  },
+  {
+    "id": "deliveryAlternative",
+    "name": "Альтернативные способы доставки",
+    "description": "Альтернатива выбранному способы доставки",
+    "method": "POST",
+    "path": "/api/deliveryAlternatives",
+    "requestSchema": {"materials":[{"name":"Кликфальц Grand Line 0,45 Полиэстер RAL 7024 мокрый асфальт","category":"Общестрой","quantity":1,"weight":0.0034,"volume":0.001,"manufacturer":"Склад Монолит"}],"addressAndCoordinates":{"address":"Санкт-Петербург","coordinates":{"latitude":59.9342802,"longitude":30.3350986}},"selectedRegion":"СПБ","paymentMethod":"cash"},
+    "responseSchema": {
+      "success": true,
+      "data": [
+          {
+              "name": "Авто (до 1,5 тн; до 14 м3) 4м",
+              "numberOfTrips": 1,
+              "costPerTrip": 4300,
+              "totalCost": 4300,
+              "distanceProdToClient": 20,
+              "usedCentralized": false
+          },
+          {
+              "name": "Авто (до 2,5 тн; до 32 м3) 6м",
+              "numberOfTrips": 1,
+              "costPerTrip": 4500,
+              "totalCost": 4500,
+              "distanceProdToClient": 20,
+              "usedCentralized": false
+          }
+        ]
+      } 
+   }
+]

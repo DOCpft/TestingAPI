@@ -1,0 +1,234 @@
+:root {
+  --primary: #4f46e5;
+  --primary-hover: #6366f1;
+  --bg-sidebar: #f9fafb;
+  --border-light: #e5e7eb;
+  --text-primary: #111827;
+  --text-secondary: #6b7280;
+  --success-bg: #ecfdf5;
+  --error-bg: #fef2f2;
+  --error-text: #b91c1c;
+  --code-bg: #f3f4f6;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --radius: 8px;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: var(--text-primary);
+  background: #ffffff;
+}
+
+/* Сайдбар */
+.sidebar {
+  width: 280px;
+  background: var(--bg-sidebar);
+  border-right: 1px solid var(--border-light);
+  padding: 24px 16px;
+  overflow-y: auto;
+}
+
+.sidebar h3 {
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+  margin: 0 0 16px 0;
+}
+
+.sidebar select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius);
+  background: white;
+  font-size: 14px;
+  color: var(--text-primary);
+  margin-bottom: 24px;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.sidebar select:hover,
+.sidebar select:focus {
+  border-color: var(--primary);
+  outline: none;
+}
+
+.sidebar p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 8px 0;
+}
+
+.sidebar strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* Основная область */
+.main {
+  flex: 1;
+  padding: 32px 40px;
+  overflow-y: auto;
+}
+
+.main h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0 0 24px 0;
+  color: var(--text-primary);
+}
+
+.main h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 16px 0;
+  color: var(--text-primary);
+}
+
+/* Query параметры */
+.queryParamRow {
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.queryParamRow label {
+  font-size: 14px;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.queryParamRow input {
+  padding: 8px 12px;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius);
+  font-size: 14px;
+  width: 300px;
+  transition: border-color 0.15s;
+}
+
+.queryParamRow input:focus {
+  border-color: var(--primary);
+  outline: none;
+}
+
+/* Текстовое поле для тела запроса */
+.textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius);
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 13px;
+  line-height: 1.5;
+  background: var(--code-bg);
+  resize: vertical;
+  margin-bottom: 16px;
+}
+
+.textarea:focus {
+  border-color: var(--primary);
+  outline: none;
+}
+
+/* Кнопка */
+.button {
+  padding: 10px 24px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+  box-shadow: var(--shadow-sm);
+}
+
+.button:hover {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.button:active {
+  transform: translateY(0);
+}
+
+.button:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Блок ошибки */
+.errorBox {
+  background: var(--error-bg);
+  border: 1px solid #fecaca;
+  border-radius: var(--radius);
+  padding: 16px;
+  color: var(--error-text);
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+/* Блок ответа */
+.responseBox {
+  background: var(--code-bg);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.responseBox p {
+  margin: 0 0 8px 0;
+  font-size: 14px;
+}
+
+.responseBox strong {
+  font-weight: 600;
+}
+
+/* Преформатированный код (JSON) */
+.preBlock {
+  background: #ffffff;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius);
+  padding: 12px;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 12px;
+  line-height: 1.5;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  margin: 8px 0 0 0;
+}
+
+/* Секция примеров схем */
+.schemaSection {
+  margin-top: 48px;
+  border-top: 1px solid var(--border-light);
+  padding-top: 24px;
+}
+
+.schemaPre {
+  background: var(--code-bg);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius);
+  padding: 12px;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 12px;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  margin: 8px 0 16px 0;
+}
